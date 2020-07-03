@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import DebitCard from './DebitCard.js';
+import CreditCard from './CreditCard.js';
 import Form from './Form.js';
 import Header from './Header.js';
 import AccountBalance from './AccountBalance.js';
 import '../Styles/Debits.css';
 
-class Debits extends Component{
+class Credits extends Component{
     constructor(props){
         super(props)
 
@@ -39,12 +39,12 @@ class Debits extends Component{
         let fullDate = curYear + "-" + curMonth + "-" + curDay + "T" + curHours + ":" + curMinutes + ":" + curSeconds;
 
 
-        let newDebit = {
+        let newCredit = {
             description: this.state.description,
             amount: parseFloat(this.state.amount),
             date: fullDate
         }
-        this.props.addDebit(newDebit)
+        this.props.addCredit(newCredit)
         this.setState({
             description: "",
             amount: ""
@@ -56,16 +56,16 @@ class Debits extends Component{
             <div>
                 <Header />
                 <div className="section-header">
-                Debits
+                Credits
                 </div>
                 <div className = "home-balance-section">
                     <AccountBalance accountBalance={this.props.accountBalance} debitBalance={this.props.debitBalance} creditBalance={this.props.creditBalance}/>
                 </div>
                 <div className="transaction-section-container">
-                    {this.props.debits.map(debit => (<DebitCard debit={debit}/>))}
+                    {this.props.credits.map(credit => (<CreditCard credit={credit}/>))}
                 </div>
                 <div className="section-header">
-                New Debit:
+                New Credit:
                 </div>
                 <div className="form-section">
                     <Form description={this.state.description} amount={this.state.amount} onChangeHandler={this.onChangeHandler} onSubmitHandler={this.onSubmitHandler}/>
@@ -75,4 +75,4 @@ class Debits extends Component{
     }
 }
 
-export default Debits;
+export default Credits;

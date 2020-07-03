@@ -5,6 +5,7 @@ import Home from './Components/Home.js';
 import UserProfile from './Components/UserProfile.js';
 import LogIn from './Components/Login.js';
 import Debits from './Components/Debits.js';
+import Credits from './Components/Credits.js';
 
 class App extends Component {
 
@@ -28,6 +29,7 @@ class App extends Component {
     this.computeTotalDebits = this.computeTotalDebits.bind(this);
     this.computeTotalCredits = this.computeTotalCredits.bind(this);
     this.addDebit = this.addDebit.bind(this);
+    this.addCredit = this.addCredit.bind(this);
   }
 
   componentDidMount(){
@@ -94,12 +96,20 @@ class App extends Component {
     this.setState({debits: updatedDebits});
   }
 
+  addCredit(newCredit){
+    let updatedCredits = this.state.credits
+    updatedCredits.push(newCredit);
+    this.computeTotalCredits(updatedCredits);
+    this.setState({credits: updatedCredits});
+  }
+
   render() {
 
-    const HomeComponent = () => (<Home accountBalance={this.state.creditTotal - this.state.debitTotal}/>);
+    const HomeComponent = () => (<Home accountBalance={this.state.creditTotal - this.state.debitTotal} debitBalance={this.state.debitTotal} creditBalance={this.state.creditTotal}/>);
     const UserProfileComponent = () => ( <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}/>);
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} {...this.props}/>)
-    const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.creditTotal - this.state.debitTotal} addDebit={this.addDebit} />)
+    const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.creditTotal - this.state.debitTotal} debitBalance={this.state.debitTotal} creditBalance={this.state.creditTotal} addDebit={this.addDebit}/>)
+    const CreditsComponent = () => (<Credits credits={this.state.credits} accountBalance={this.state.creditTotal - this.state.debitTotal} debitBalance={this.state.debitTotal} creditBalance={this.state.creditTotal} addCredit={this.addCredit}/>)
 
 
     return (
@@ -109,6 +119,7 @@ class App extends Component {
             <Route exact path="/userProfile" render={UserProfileComponent}/>
             <Route exact path="/login" render={LogInComponent}/>
             <Route exact path="/debits" render={DebitsComponent}/>
+            <Route exact path="/credits" render={CreditsComponent}/>
           </div>
         </Router>
     );
