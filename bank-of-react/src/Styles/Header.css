@@ -1,0 +1,41 @@
+.left-button{
+    display: inline-block;
+    color: whitesmoke;
+    text-decoration: none;
+    text-shadow: 1px 1px gray;
+
+    margin-left: 100px;
+    margin-top: 12px;
+}
+
+.debit-credit-section{
+    color: whitesmoke;
+    text-decoration: none;
+    text-shadow: 1px 1px gray;
+
+    float: right;
+    margin-top: 12px;
+    margin-right: 100px;
+}
+
+.debit-credit-section:hover{
+    color: rgb(225, 225, 225);
+}
+
+.nav-bar-general{
+    height: 70px;
+    background-color: rgb(174, 24, 24);
+
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+
+}
+
+.right-buttons{
+    float: right;
+}
+
+.left-button:hover{
+    color: rgb(225, 225, 225);
+}
