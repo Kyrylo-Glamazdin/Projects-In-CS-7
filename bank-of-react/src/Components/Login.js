@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import '../Styles/General.css';
 
 class LogIn extends Component {
   constructor () {
@@ -34,17 +35,19 @@ class LogIn extends Component {
     }
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="userName">User Name</label>
-            <input type="text" name="userName" onChange={this.handleChange} value={this.state.user.userName} />
+      <div className="login-container">
+        <form className="login-form" onSubmit={this.handleSubmit}>
+          <div className="login-title">Log In
           </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" />
+          <div className="login-credentials">
+            <label className="standard-login-label" htmlFor="userName">User Name</label>
+            <input className="standard-login-input" type="text" name="userName" onChange={this.handleChange} value={this.state.user.userName} />
+          
+            <label className="standard-login-label" htmlFor="password">Password</label>
+            <input className="standard-login-input" type="password" name="password" />
+
+            <input className="login-button" type="submit" value="Log In"/>
           </div>
-          <button>Log In</button>
         </form>
       </div>
     )
