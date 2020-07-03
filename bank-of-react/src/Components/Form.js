@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import '../Styles/Debits.css';
 
+//the form used in the debit and credit pages to enter new debit/credit info.
+//includes such fields as the amount and the description of a new transaction
 class Form extends Component{
 
     render(){
