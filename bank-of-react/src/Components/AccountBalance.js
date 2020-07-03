@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import '../Styles/General.css';
 
 class AccountBalance extends Component {
   render() {
     return (
         <div>
-          Balance: {this.props.accountBalance}
+          <div className="special-text"> Your Account Balance: </div> 
+          <div className="balance-text">{this.props.accountBalance}</div>
         </div>
     );
   }

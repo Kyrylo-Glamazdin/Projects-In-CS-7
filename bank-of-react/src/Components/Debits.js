@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import DebitCard from './DebitCard.js';
 import Form from './Form.js';
+import Header from './Header.js';
+import AccountBalance from './AccountBalance.js';
+import '../Styles/Debits.css';
 
 class Debits extends Component{
     constructor(props){
@@ -33,7 +36,7 @@ class Debits extends Component{
         let curMinutes = String(curDate.getMinutes()).padStart(2, '0');
         let curSeconds = String(curDate.getSeconds()).padStart(2, '0');
 
-        let fullDate = curYear + "-" + curMonth + "-" + curDay + "-" + "T" + curHours + ":" + curMinutes + ":" + curSeconds;
+        let fullDate = curYear + "-" + curMonth + "-" + curDay + "T" + curHours + ":" + curMinutes + ":" + curSeconds;
 
 
         let newDebit = {
@@ -51,16 +54,22 @@ class Debits extends Component{
     render(){
         return(
             <div>
-                <div>
+                <Header />
+                <div className="section-header">
                 Debits
                 </div>
-                <div>
-                    Account Balance: {this.props.accountBalance}
+                <div className = "home-balance-section">
+                    <AccountBalance accountBalance={this.props.accountBalance}/>
                 </div>
-                <div>
+                <div className="transaction-section-container">
                     {this.props.debits.map(debit => (<DebitCard debit={debit}/>))}
                 </div>
-                <Form description={this.state.description} amount={this.state.amount} onChangeHandler={this.onChangeHandler} onSubmitHandler={this.onSubmitHandler}/>
+                <div className="section-header">
+                New Debit:
+                </div>
+                <div className="form-section">
+                    <Form description={this.state.description} amount={this.state.amount} onChangeHandler={this.onChangeHandler} onSubmitHandler={this.onSubmitHandler}/>
+                </div>
             </div>
         );
     }
