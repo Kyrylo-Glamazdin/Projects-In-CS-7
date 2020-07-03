@@ -1,7 +1,9 @@
 import React from 'react';
 import '../Styles/Debits.css';
 
+//component for each individual credit transaction
 function CreditCard(props){
+    //separate the date into date and time to display separately
     let fullDate = String(props.credit.date);
     let tIndex = 0;
     for (let i = 0; i < fullDate.length; i++){
@@ -11,8 +13,8 @@ function CreditCard(props){
         }
     }
 
-    let transactionDate = fullDate.substring(0, tIndex);
-    let transactionTime = fullDate.substring(tIndex+1, fullDate.length);
+    let transactionDate = fullDate.substring(0, tIndex); //date
+    let transactionTime = fullDate.substring(tIndex+1, fullDate.length); //time
 
     return (
         <div className="card-container">

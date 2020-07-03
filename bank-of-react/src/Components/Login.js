@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import '../Styles/General.css';
 
+//log in component that requires the user to log in before proceeding to the application.
+//trying to access the home page without logging in first would redirect here
 class LogIn extends Component {
   constructor () {
     super()
@@ -23,12 +25,14 @@ class LogIn extends Component {
     this.setState({user: updatedUser})
   }
 
+  //performs the mock log in and allows user to redirect to the home page
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.mockLogIn(this.state.user)
     this.setState({redirect: true})
   }
 
+  //redirects to the home page after logging in
   render () {
     if (this.state.redirect) {
       return (<Redirect to="/"/>)

@@ -4,6 +4,7 @@ import Header from './Header.js';
 import '../Styles/Debits.css';
 import '../Styles/Profile.css';
 
+//user profile component which displays user's username and membership date
 class UserProfile extends Component {
   render() {
     return (

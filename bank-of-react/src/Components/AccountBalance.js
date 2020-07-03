@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../Styles/General.css';
 
+//component that displays all of the user's balances (such as debits, credits, and total)
 class AccountBalance extends Component {
   render() {
     return (
