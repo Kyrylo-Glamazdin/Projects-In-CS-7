@@ -21,7 +21,8 @@ class App extends Component {
       currentUser: {
         userName: 'bob_loblaw',
         memberSince: '08/23/99',
-      }
+      },
+      loggedIn: false
     }
 
     this.loadDebits = this.loadDebits.bind(this);
@@ -86,7 +87,10 @@ class App extends Component {
   mockLogIn = (logInInfo) => {
     const newUser = {...this.state.currentUser}
     newUser.userName = logInInfo.userName
-    this.setState({currentUser: newUser})
+    this.setState({
+      loggedIn: true,
+      currentUser: newUser
+    })
   }
 
   addDebit(newDebit){
@@ -105,12 +109,11 @@ class App extends Component {
 
   render() {
 
-    const HomeComponent = () => (<Home accountBalance={this.state.creditTotal - this.state.debitTotal} debitBalance={this.state.debitTotal} creditBalance={this.state.creditTotal}/>);
+    const HomeComponent = () => (<Home accountBalance={this.state.creditTotal - this.state.debitTotal} debitBalance={this.state.debitTotal} creditBalance={this.state.creditTotal} loggedIn={this.state.loggedIn}/>);
     const UserProfileComponent = () => ( <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}/>);
-    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} {...this.props}/>)
+    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} {...this.props} />)
     const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.creditTotal - this.state.debitTotal} debitBalance={this.state.debitTotal} creditBalance={this.state.creditTotal} addDebit={this.addDebit}/>)
     const CreditsComponent = () => (<Credits credits={this.state.credits} accountBalance={this.state.creditTotal - this.state.debitTotal} debitBalance={this.state.debitTotal} creditBalance={this.state.creditTotal} addCredit={this.addCredit}/>)
-
 
     return (
         <Router>
